@@ -1,4 +1,4 @@
-const { app, BrowserWindow, components, dialog, ipcMain, Menu, nativeTheme, Tray } = require('electron/main');
+const { app, BrowserWindow, components, dialog, ipcMain, Menu, nativeTheme, Tray } = require('electron');
 const electronLog = require('electron-log');
 const contextMenu = require('electron-context-menu');
 const Store = require('electron-store');
@@ -88,8 +88,10 @@ async function createWindow() {
     frame: isMac ? true : true,
     webPreferences: {
       nodeIntegration: false,
-      contextIsolation: true,
-      sandbox: false,
+      nodeIntegrationInWorker: false,
+      contextIsolation: false,
+      sandbox: true,
+      experimentalFeatures: true,
       devTools: true,
       preload: path.join(__dirname, 'preload/client-preload.js')
     }
