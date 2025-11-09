@@ -1,4 +1,4 @@
-const { app, BrowserWindow, components, dialog, ipcMain, Menu, nativeTheme, Tray } = require('electron');
+const { app, BrowserWindow, components, dialog, ipcMain, Menu, nativeTheme, Tray } = require('electron/main');
 const electronLog = require('electron-log');
 const contextMenu = require('electron-context-menu');
 const Store = require('electron-store');
@@ -88,10 +88,8 @@ async function createWindow() {
     frame: isMac ? true : true,
     webPreferences: {
       nodeIntegration: false,
-      nodeIntegrationInWorker: false,
-      contextIsolation: false,
-      sandbox: true,
-      experimentalFeatures: true,
+      contextIsolation: true,
+      sandbox: false,
       devTools: true,
       preload: path.join(__dirname, 'preload/client-preload.js')
     }
@@ -572,6 +570,7 @@ app.commandLine.appendSwitch('ignore-gpu-blocklist');
 app.commandLine.appendSwitch('enable-gpu-rasterization');
 app.commandLine.appendSwitch('enable-features', 'CSSColorSchemeUARendering,ImpulseScrollAnimations,ParallelDownloading,Portals,StorageBuckets,JXL');
 app.commandLine.appendSwitch('disable-features', 'ChromeRefresh2023,ChromeRefreshSecondary2023,CustomizeChromeSidePanel,ChromeWebuiRefresh2023');
+
 // Enable remote debugging only if we are in development mode
 if (isDev) {
   const portNumber = '9222'
