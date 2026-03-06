@@ -2,6 +2,10 @@ const { BrowserWindow, Menu, screen, shell } = require('electron');
 const path = require('path');
 const electronLog = require('electron-log');
 
+function defaultUserAgent() {
+  return 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36';
+}
+
 module.exports = (app, mainWindow, store) => {
   // Get app info
   const appName = app.getName();
@@ -36,6 +40,7 @@ module.exports = (app, mainWindow, store) => {
         devTools: true
       }
     });
+    popoutWindow.webContents.userAgent = defaultUserAgent();
     popoutWindow.loadURL('https://www.google.com/');
     popoutWindow.setBounds({ x: secondaryWindowX });
     electronLog.info('Opened Popout Window');

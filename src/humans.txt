@@ -22,7 +22,7 @@
 
 /* WEBPAGE */
 
-	Last update: 2025/05/05
+	Last update: 2026/03/06
 	Language: English
 	Doctype: HTML5, CSS, WebGL
 	IDE: Geany

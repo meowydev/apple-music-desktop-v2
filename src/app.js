@@ -12,6 +12,11 @@ const isDev = process.env.NODE_ENV === 'development';
 // Create config.json
 const store = new Store();
 
+// UA variable
+function defaultUserAgent() {
+  return 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36';
+}
+
 // Initialize Electron remote module
 require('@electron/remote/main').initialize();
 
@@ -97,6 +102,7 @@ async function createWindow() {
     }
   });
   require('@electron/remote/main').enable(mainWindow.webContents);
+
   Menu.setApplicationMenu(mainMenu(app, mainWindow, store));
 
   // Reset the Window's size and location
@@ -131,6 +137,7 @@ async function createWindow() {
   }
 
   // Load the index.html or webpage of the app.
+  mainWindow.webContents.userAgent = defaultUserAgent();
   mainWindow.loadURL(mainURL);
   mainWindow.on('page-title-updated', function(e) {
     e.preventDefault();
@@ -218,6 +225,7 @@ app.on('change-site', () => {
   }
   electronLog.info('Switching to ' + mainURL);
   electronLog.warn(logMessage);
+  mainWindow.webContents.userAgent = defaultUserAgent();
   mainWindow.loadURL(mainURL);
   mainWindow.setTitle(windowTitle);
   mainWindow.on('page-title-updated', function(e) {
@@ -337,6 +345,7 @@ contextMenu({
           devTools: true
         }
       });
+      linkWin.webContents.userAgent = defaultUserAgent();
       linkWin.loadURL(toURL);
       electronLog.info('Opened Link in New Window');
     }
@@ -359,6 +368,7 @@ contextMenu({
           devTools: true
         }
       });
+      imgWin.webContents.userAgent = defaultUserAgent();
       imgWin.loadURL(imgURL);
       electronLog.info('Opened Image in New Window');
     }
@@ -381,6 +391,7 @@ contextMenu({
           devTools: true
         }
       });
+      vidWin.webContents.userAgent = defaultUserAgent();
       vidWin.loadURL(vidURL);
       electronLog.info('Popped out Video');
     }
