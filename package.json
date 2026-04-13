@@ -28,7 +28,7 @@
     "distMac": "electron-builder -m --pd dist/mac",
     "eslint": "eslint \"src/**/*.js*\"",
     "stylelint": "stylelint \"src/**/*.css*\"",
-    "start": "electron ./src",
+    "start": "electron ./src --no-sandbox --disable-gpu --disable-gpu-sandbox",
     "winstart": "electron src",
     "dev": "NODE_ENV=development electron --enable-logging=file --user-data-dir=./test ./src",
     "postinstall": "electron-builder install-app-deps"
