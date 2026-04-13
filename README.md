@@ -13,17 +13,30 @@ It has many menu items, adding on top of the default ones, and a tray icon which
 
 See the [Releases](https://github.com/Alex313031/apple-music-desktop/releases).
 
-## Building
+# Developing
 
-Requires nodejs 16, or 18. It is reccomended to use [nvm](https://github.com/nvm-sh/nvm) for installing/managing node versions.
-Yarn can also be used.
+## Prerequisites
+nodejs 16 or 18 is required.
+
+## Preparing the development enviroment
+
+### Clone the repo
 
 ```bash
-git clone https://github.com/Alex313031/apple-music-desktop.git
-cd apple-music-desktop
-nvm install # Only use if you are using nvm
-npm install # Install needed npm deps
-npm run start # Run app in dev mode
+git clone https://github.com/meowydev/apple-music-desktop-v2.git
+cd apple-music-desktop-v2
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the app
+
+```bash
+npm run start
 ```
 
 ## TODO
