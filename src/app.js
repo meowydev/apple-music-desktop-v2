@@ -9,6 +9,14 @@ const mainMenu = require('./menu.js'); // For making native menu
 const mainLogger = require('./logger.js'); // Misc. logging
 const isDev = process.env.NODE_ENV === 'development';
 
+// Disable all hardware accel and sandbox to prevent crashing
+// Should be fixed properly
+
+app.disableHardwareAcceleration();
+app.commandLine.appendSwitch('no-sandbox');
+app.commandLine.appendSwitch('disable-gpu');
+app.commandLine.appendSwitch('disable-gpu-sandbox')
+
 // Create config.json
 const store = new Store();
 
@@ -95,7 +103,7 @@ async function createWindow() {
       nodeIntegration: false,
       nodeIntegrationInWorker: false,
       contextIsolation: false,
-      sandbox: true,
+      sandbox: false,
       experimentalFeatures: true,
       devTools: true,
       preload: path.join(__dirname, 'preload/client-preload.js')
@@ -603,8 +611,8 @@ app.on('activate', () => {
 app.commandLine.appendSwitch('enable-local-file-accesses');
 app.commandLine.appendSwitch('enable-quic');
 app.commandLine.appendSwitch('enable-ui-devtools');
-app.commandLine.appendSwitch('ignore-gpu-blocklist');
-app.commandLine.appendSwitch('enable-gpu-rasterization');
+//app.commandLine.appendSwitch('ignore-gpu-blocklist');
+//app.commandLine.appendSwitch('enable-gpu-rasterization');
 app.commandLine.appendSwitch('enable-features', 'CSSColorSchemeUARendering,ImpulseScrollAnimations,ParallelDownloading,Portals,StorageBuckets,JXL');
 app.commandLine.appendSwitch('disable-features', 'ChromeRefresh2023,ChromeRefreshSecondary2023,CustomizeChromeSidePanel,ChromeWebuiRefresh2023');
 // Enable remote debugging only if we are in development mode
@@ -629,18 +637,47 @@ app.on('remote-get-current-window', rejectEvent);
 app.on('remote-get-guest-web-contents', rejectEvent);
 
 // Fire it up
-app.whenReady().then(async() => {
-  if (argsCmd.includes('--cdm-info')) {
+//app.whenReady().then(async() => {
+//  if (argsCmd.includes('--cdm-info')) {
+//    await components.whenReady();
+//    console.log('WidevineCDM Component Info:\n');
+//    console.log(components.status());
+//    app.quit();
+//  } else {
+//    // Initialize Widevine
+//    await components.whenReady();
+//    logAppInfo();
+//    handleTray();
+//    createWindow();
+//    electronLog.info('Loading mainURL: ' + mainURL);
+//  }
+//});
+
+// New fire it up
+app.whenReady().then(async () => {
+  try {
+    if (argsCmd.includes('--cdm-info')) {
+      await components.whenReady();
+      console.log('WidevineCDM Component Info:\n');
+      console.log(components.status());
+      app.quit();
+      return;
+    }
+
     await components.whenReady();
-    console.log('WidevineCDM Component Info:\n');
-    console.log(components.status());
-    app.quit();
-  } else {
-    // Initialize Widevine
-    await components.whenReady();
-    logAppInfo();
-    handleTray();
-    createWindow();
-    electronLog.info('Loading mainURL: ' + mainURL);
+    console.log('components ready:', components.status());
+  } catch (err) {
+    console.error('components.whenReady() failed:', err);
+    if (err && err.errors) {
+      console.error('component sub-errors:', err.errors);
+    }
+    try {
+      console.error('component status:', components.status());
+    } catch (_) {}
   }
+
+  logAppInfo();
+  handleTray();
+  createWindow();
+  electronLog.info('Loading mainURL: ' + mainURL);
 });

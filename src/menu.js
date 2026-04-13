@@ -443,7 +443,7 @@ module.exports = (app, mainWindow, store) => {
         label: 'Created by Alex313031',
         click() {
           const createdWindow = new BrowserWindow({ width: 1024, height: 700, useContentSize: true });
-          createdWindow.loadURL('https://github.com/Alex313031/apple-music-desktop#readme');
+          createdWindow.loadURL('https://github.com/meowydev/apple-music-desktop-v2#readme');
           createdWindow.setBounds({ x: secondaryWindowX });
         }
       },
@@ -460,7 +460,41 @@ module.exports = (app, mainWindow, store) => {
             darkTheme: store.get('options.useLightMode') ? false : true,
             title: 'humans.txt'
           });
-          humansWindow.loadFile('./humans.txt');
+          humansWindow.loadURL(`data:text/html;charset=utf-8,
+<html>
+  <body style="font-family: monospace; white-space: pre-wrap; padding: 10px;">
+    ## apple-music-desktop humans.txt ##
+
+    # Copyright (c) 2025 Alex313031.
+    # https://humanstxt.org/
+
+    /* ABOUT */
+      
+      Developer: Alexander Frick
+      Role: Main Developer
+      Twitter: @alex313031
+      GitHub: @Alex313031
+      Email: alex313031@gmail.com
+      Website: https://thorium.rocks/
+      From: Oklahoma, US
+      
+    /* THANKS */
+      
+      ciderapp
+      sindresorhus
+      castlabs
+      electronjs
+
+    /* WEBPAGE */
+
+      Last update: 2026/03/06
+      Language: English
+      Doctype: HTML5, CSS, WebGL
+      IDE: Geany
+
+  </body>
+</html>
+`);
           humansWindow.setBounds({ x: secondaryWindowX });
           electronLog.info('Opened humans.txt :)');
         }
@@ -477,7 +511,41 @@ module.exports = (app, mainWindow, store) => {
             darkTheme: store.get('options.useLightMode') ? false : true,
             title: 'License'
           });
-          licenseWindow.loadFile('./license.md');
+          licenseWindow.loadURL(`data:text/html;charset=utf-8,
+<html>
+  <body style="font-family: monospace; white-space: pre-wrap; padding: 10px;">
+    BSD 3-Clause License
+
+    Copyright (c) 2024-2025, Alex313031
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this
+      list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
+      and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+  </body>
+</html>
+`);
           licenseWindow.setBounds({ x: secondaryWindowX });
           electronLog.info('Opened license.md');
         }
@@ -506,7 +574,7 @@ module.exports = (app, mainWindow, store) => {
             }
           });
           require('@electron/remote/main').enable(aboutWindow.webContents);
-          aboutWindow.loadFile('./about.html');
+          aboutWindow.loadFile(path.join(__dirname, './about.html'));
           aboutWindow.setBounds({ x: secondaryWindowX });
           electronLog.info('Opened about.html');
         }

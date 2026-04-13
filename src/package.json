@@ -17,7 +17,7 @@
     "test": "echo \"Error: No test specified\" && exit 1",
     "clean": "rimraf node_modules/",
     "burn": "rimraf package-lock.json",
-    "start": "electron .",
+    "start": "electron . --no-sandbox --disable-gpu --disable-gpu-sandbox",
     "winstart": "electron ."
   },
   "dependencies": {
