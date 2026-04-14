@@ -120,10 +120,10 @@ module.exports = (app, mainWindow, store) => {
     label: 'Settings',
     submenu: [
       {
-        label: store.get('options.useLightMode') ? 'Use Dark Mode' : 'Use Light Mode',
+        label: 'Use Light Mode',
         type: 'checkbox',
         accelerator: 'CmdorCtrl+Shift+D',
-        
+
         click() {
             if (store.get('options.useLightMode')) {
               store.set('options.useLightMode', false);
@@ -133,9 +133,11 @@ module.exports = (app, mainWindow, store) => {
               store.set('options.useLightMode', true);
               nativeTheme.themeSource = 'light';
             }
+          const val = store.get('options.useLightMode') ? "Light theme" : "Dark theme";
+          electronLog.info("Changed theme to " + val);
         },
           
-        checked: false
+        checked: store.get('options.useLightMode')
       },
       {
         label: 'Use Beta Site',
