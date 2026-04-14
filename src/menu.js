@@ -133,6 +133,7 @@ module.exports = (app, mainWindow, store) => {
               store.set('options.useLightMode', true);
               nativeTheme.themeSource = 'light';
             }
+          // im a log freak too
           const val = store.get('options.useLightMode') ? "Light theme" : "Dark theme";
           electronLog.info("Changed theme to " + val);
         },

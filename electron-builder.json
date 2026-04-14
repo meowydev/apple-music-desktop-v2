@@ -22,14 +22,13 @@
     "target": [
       "zip",
       "deb",
-      "rpm",
       "appimage"
     ],
     "icon": "build/icons",
     "maintainer": "Alex313031",
     "vendor": "Alex313031",
     "synopsis": "An Electron app that provides a native Apple Music experience for Linux & Windows.",
-    "category": "AudioVideo;",
+    "category": "AudioVideo",
     "executableName": "apple-music",
     "artifactName": "apple-music_${version}_${arch}.${ext}",
     "desktop": {
