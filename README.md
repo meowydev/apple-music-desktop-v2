@@ -7,9 +7,10 @@
 
 This is app tries to provide native experience for Apple Music. This is a fork of the original project that is being actively developed
 
-It has an "About" Window that lists the App Version, [Electron](https://www.electronjs.org/), [Chromium](https://www.chromium.org/), [Node](https://nodejs.org/), and [V8](https://v8.dev/) versions for the given Electron version in the package.json.
-
-It has many menu items, adding on top of the default ones, and a tray icon which you can use to focus the app or minimize it to the tray.
+# Features
+| Feature name | Details |
+| ------------ | ------- |
+| Light mode switch | Allows you to switch between dark and light modes |
 
 # Installation
 
