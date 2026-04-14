@@ -1,0 +1,79 @@
+name: Manual build
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Which platform to build
+        required: true
+        default: linux
+        type: choice
+        options:
+          - linux
+          - windows
+          - all
+
+jobs:
+  build-linux:
+    if: ${{ inputs.platform == 'linux' || inputs.platform == 'all' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install src dependencies
+        run: cd src && npm install
+
+      - name: Build Linux
+        run: npm run distLinux
+
+      - name: Upload Linux artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: |
+            dist/*.AppImage
+            dist/*.deb
+            dist/*.zip
+
+  build-windows:
+    if: ${{ inputs.platform == 'windows' || inputs.platform == 'all' }}
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install src dependencies
+        run: cd src; npm install
+        shell: powershell
+
+      - name: Build Windows
+        run: npm run distWin
+
+      - name: Upload Windows artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            dist/*.exe
+            dist/*.zip
