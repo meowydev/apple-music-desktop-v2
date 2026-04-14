@@ -1,4 +1,4 @@
-const { BrowserWindow, Menu, screen, shell } = require('electron');
+const { BrowserWindow, Menu, screen, shell, nativeTheme } = require('electron');
 const path = require('path');
 const electronLog = require('electron-log');
 
@@ -123,14 +123,18 @@ module.exports = (app, mainWindow, store) => {
         label: store.get('options.useLightMode') ? 'Use Dark Mode' : 'Use Light Mode',
         type: 'checkbox',
         accelerator: 'CmdorCtrl+Shift+D',
+        
         click() {
-          if (store.get('options.useLightMode')) {
-            store.set('options.useLightMode', false);
-          } else {
-            store.set('options.useLightMode', true);
-          }
-          app.emit('restart-confirm');
+            if (store.get('options.useLightMode')) {
+              store.set('options.useLightMode', false);
+              nativeTheme.themeSource = 'dark';
+            }
+            else {
+              store.set('options.useLightMode', true);
+              nativeTheme.themeSource = 'light';
+            }
         },
+          
         checked: false
       },
       {
