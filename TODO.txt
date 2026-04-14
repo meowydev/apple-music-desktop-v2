@@ -1,10 +1,6 @@
-  "electronDownload": {
-      "isVerifyChecksum": false,
-      "strictSSL": false,
-      "cache": "electron",
-      "mirror": "https://github.com/Alex313031/electron-22/releases/download/v"
-  },
+--- Important tasks ---
+Fix license menu
 
- - make version window seperate PARTIALLY COMPLETED
-
- - Investigate default menu and electron-util package
+--- Tasks ---
+Remove humans.txt from menu
+Remove all debugging tools in release builds
