@@ -1,8 +1,8 @@
 {
   "asar": true,
   "productName": "Apple Music",
-  "appId": "com.alex313031.apple-music-desktop",
-  "copyright": "Copyright © 2025 Alex313031",
+  "appId": "com.meowydev.apple-music-desktop-v2",
+  "copyright": "Copyright © 2026 Alex313031 and Meowydev",
   "generateUpdatesFilesForAllChannels": false,
   "publish": null,
   "directories": {
@@ -26,8 +26,8 @@
       "appimage"
     ],
     "icon": "build/icons",
-    "maintainer": "Alex313031",
-    "vendor": "Alex313031",
+    "maintainer": "Meowy",
+    "vendor": "Meowy",
     "synopsis": "An Electron app that provides a native Apple Music experience for Linux & Windows.",
     "category": "AudioVideo",
     "executableName": "apple-music",
@@ -46,7 +46,7 @@
       "portable",
       "nsis"
     ],
-    "publisherName": "Alex313031",
+    "publisherName": "Meowy",
     "executableName": "apple_music",
     "artifactName": "apple_music_${version}_${arch}.${ext}"
   },

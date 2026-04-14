@@ -5,10 +5,10 @@
   "applicationId": "com.alex313031.apple-music-desktop",
   "version": "2.3.0",
   "description": "An Electron app that provides a native Apple Music experience for Linux & Windows.",
-  "author": "Alex313031",
+  "author": "Meowydev",
   "license": "BSD-3-Clause",
-  "copyright": "Copyright © 2025 Alex313031",
-  "repository": "https://github.com/Alex313031/apple-music-desktop",
+  "copyright": "Copyright © 2025 Alex313031 and Meowydev",
+  "repository": "https://github.com/meowydev/apple-music-desktop-v2",
   "main": "./src/app.js",
   "engines": {
     "node": ">=18"
