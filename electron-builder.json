@@ -4,6 +4,7 @@
   "appId": "com.alex313031.apple-music-desktop",
   "copyright": "Copyright © 2025 Alex313031",
   "generateUpdatesFilesForAllChannels": false,
+  "publish": null,
   "directories": {
       "app": "src",
       "buildResources": "build",
