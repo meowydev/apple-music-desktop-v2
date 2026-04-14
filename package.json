@@ -48,5 +48,8 @@
     "rimraf": "5.0.10",
     "stylelint": "14.16.1",
     "stylelint-config-standard": "29.0.0"
+  },
+  "build": {
+    "publish": null
   }
 }
