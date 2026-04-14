@@ -1,11 +1,11 @@
-# Apple Music Desktop &nbsp;
+# Apple Music Desktop
 
 > [!NOTE]
 > This project is an unofficial Apple Music client and is not affiliated with, endorsed by, or in any way officially connected to Apple Inc.
 > Apple, Apple Music, and all related names, logos, and trademarks are the property of Apple Inc.
 
 
-This is an [Electron](https://www.electronjs.org/) app that provides a native Apple Music experience for Linux & Windows
+This is app tries to provide native experience for Apple Music. This is a fork of the original project that is being actively developed
 
 It has an "About" Window that lists the App Version, [Electron](https://www.electronjs.org/), [Chromium](https://www.chromium.org/), [Node](https://nodejs.org/), and [V8](https://v8.dev/) versions for the given Electron version in the package.json.
 

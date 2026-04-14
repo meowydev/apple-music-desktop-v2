@@ -62,12 +62,6 @@ module.exports = (app) => {
     }
   },
   {
-    label: 'Minimize to Tray',
-    click() {
-      app.emit('minimize-to-tray');
-    }
-  },
-  {
     label: 'Quit',
     role: 'quit',
     click() {
