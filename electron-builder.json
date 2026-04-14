@@ -1,9 +1,4 @@
 {
-  "electronVersion": "30.5.1",
-  "electronDownload": {
-    "version": "30.5.1+wvcus",
-    "mirror": "https://github.com/castlabs/electron-releases/releases/download/v"
-  },
   "asar": true,
   "productName": "Apple Music",
   "appId": "com.alex313031.apple-music-desktop",

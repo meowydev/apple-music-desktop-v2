@@ -28,15 +28,12 @@
   },
   "devDependencies": {
     "asar": "3.2.0",
-    "electron": "git+https://github.com/castlabs/electron-releases#v30.5.1+wvcus",
+    "electron": "^41.2.0",
     "electron-builder": "23.6.0",
     "electron-util": "0.17.2",
     "eslint": "8.44.0",
     "rimraf": "4.4.1",
     "stylelint": "14.16.1",
     "stylelint-config-standard": "29.0.0"
-  },
-  "resolutions": {
-    "electron": "git+https://github.com/castlabs/electron-releases#v30.5.1+wvcus"
   }
 }

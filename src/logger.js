@@ -19,7 +19,6 @@ module.exports.startLogging = (store) => {
   } else {
     // I'm a Log freak, can you tell?
     electronLog.info('Welcome to ' + appName + ' Desktop!');
-    electronLog.info('WidevineCDM component ready.');
     electronLog.info('App Version: ' + [ appVersion ]);
     electronLog.info('Electron Version: ' + [ electronVersion ]);
     electronLog.info('Chromium Version: ' + [ chromeVersion ]);
