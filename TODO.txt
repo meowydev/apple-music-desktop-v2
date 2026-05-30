@@ -1,6 +1,5 @@
 --- Important tasks ---
-Fix license menu
+
 
 --- Tasks ---
-Remove humans.txt from menu
-Remove all debugging tools in release builds
+Release a build
